@@ -1,0 +1,24 @@
+FROM node:15-slim
+
+ENV PORT=5000
+ENV MY_SQL_URL=gss_mariadb
+ENV MY_SQL_USER=root
+ENV MY_SQL_PASSWORD=Bleach@123
+ENV MY_SQL_DATABASE=GSS
+ENV MY_SQL_PORT=3306
+ENV TWO_FACTOR_API_KEY=1c3a9a32-d857-11ec-9c12-0200cd936042
+ENV RAZOR_KEY_ID=rzp_test_yZOgOCCzISGGfu
+ENV RAZOR_KEY_SECRET=EAA7yxk0UkepDgq22ADyjQc2
+
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . ./
+
+EXPOSE 5000
+
+CMD ["npm", "start"]
